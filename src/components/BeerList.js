@@ -10,7 +10,7 @@ const adventureList = () => {
 
   if (loading) return <h1>Loading...</h1>;
 
-  const beerElements = beers.map(() => (
+  const beerElements = beers.map((beer) => (
     <li key={beer.id}>
       <Beer {...beer} />
       <button onClick={() => {
