@@ -4,11 +4,11 @@ import { useState } from 'react';
 import { makeBeer } from '../services/beerApi';
 
 const BeerCreate = () => {
-  const [name, setName] = useState('NAME');
-  const [image, setImage] = useState('IMAGE');
-  const [abv, setAbv] = useState('ABV%');
-  const [type, setType] = useState('TYPE');
-  const [rating, setRating] = useState('RATING');
+  const [name, setName] = useState('');
+  const [image, setImage] = useState('');
+  const [abv, setAbv] = useState('');
+  const [type, setType] = useState('');
+  const [rating, setRating] = useState(0);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
