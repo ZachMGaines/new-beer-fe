@@ -6,7 +6,7 @@ export const fetchAllBeers = async (page) => {
 };
 
 export const fetchOneBeer = async (id) => {
-  const res = await fetch(`https://pure-sands-36666.herokuapp.com/api/v1/${id}`);
+  const res = await fetch(`https://pure-sands-36666.herokuapp.com/api/v1/beers/${id}`);
   const json = await res.json();
   return json;
 };
@@ -22,13 +22,14 @@ export const makeBeer = async (body) => {
 };
 
 export const deleteBeer = async (id) => {
-  await fetch(`https://pure-sands-36666.herokuapp.com/api/v1/${id}`, {
+  await fetch(`https://pure-sands-36666.herokuapp.com/api/v1/beers/${id}`, {
     method: 'DELETE'
   });
 };
 
 export const updateBeer = async (obj) => {
-  await fetch(`https://pure-sands-36666.herokuapp.com/api/v1/${obj.id}`, {
+  console.log(obj);
+  await fetch(`https://pure-sands-36666.herokuapp.com/api/v1/beers/${obj.id}`, {
     method: 'PUT',
     headers: {
       'Content-type': 'application/json; charset=UTF-8'

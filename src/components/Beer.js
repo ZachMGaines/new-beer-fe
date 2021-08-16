@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const Beer = ({ id, name, image, abv, type, rating }) => {
   return <section>
-    <Link to={`adv/${id}`}>
+    <Link to={`/beers/${id}`}>
       <img src={image} alt={name} />
       <h1>{name}</h1>
       <h2>Alcohol %: {abv}</h2>

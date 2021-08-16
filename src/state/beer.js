@@ -27,3 +27,13 @@ export const listBeer = (page) => {
   return { beers, loading };
 };
 
+export const useBeer = (id) => {
+  const [beer, setBeer] = useState({});
+  useEffect(() => {
+    fetchOneBeer(id)
+      .then(setBeer);
+  }, [id]);
+
+  return beer;
+};
+

@@ -1,21 +1,36 @@
 /* eslint-disable max-len */
-import React from 'react';
-import { useState } from 'react';
-import { makeBeer } from '../services/beerApi';
+import { updateBeer } from '../services/beerApi';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router';
+import { useBeer } from '../state/beer.js';
 
-const BeerCreate = () => {
+
+export const updateThisBeer = () => {
   const [name, setName] = useState('');
   const [image, setImage] = useState('');
   const [abv, setAbv] = useState('');
   const [type, setType] = useState('');
   const [rating, setRating] = useState(0);
 
+
+  const { id } = useParams();
+  const beer = useBeer(id);
+  console.log(name);
+  useEffect(() => {
+    setName(beer.name);
+    setImage(beer.image);
+    setAbv(beer.abv);
+    setType(beer.type);
+    setRating(beer.rating);
+  }, [beer]);
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const obj = {
-      name, image, abv, type, rating
+      id, name, image, abv, type, rating
     };
-    makeBeer(obj);
+    updateBeer(obj);
     setTimeout(() => {
       window.location.href = '/';
     }, 1000);
@@ -31,4 +46,4 @@ const BeerCreate = () => {
   </form>;
 };
 
-export default BeerCreate;
+
