@@ -2,28 +2,19 @@
 import React from 'react';
 import { beerDetail } from '../state/beer';
 import { useParams } from 'react-router';
-import { useState } from 'react';
-import { updateBeer } from '../services/beerApi';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const BeerDetailPage = () => {
-  const [title, setTitle] = useState();
+
   const { id } = useParams();
   const { details, loading } = beerDetail(id);
+  const history = useHistory();
+  const handleClick = () => {
+    history.push(`/beers/${id}/update`);
+  };
   if (loading) return <h1>Loading...</h1>;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const obj = {
-      id,
-      title
-    };
-    updateBeer(obj);
-    setTimeout(() => {
-      window.location.href = `beers/${obj.id}`;
-    }, 1000);
 
-  };
 
   return (
     <section>
@@ -35,7 +26,7 @@ const BeerDetailPage = () => {
       <p>Rating: {details.rating}</p>
 
 
-      <Link to={`/beers/${id}/update`}>Update!</Link>
+      <button onClick={handleClick}>Update!</button>
 
     </section >
   );

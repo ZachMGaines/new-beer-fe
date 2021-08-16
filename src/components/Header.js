@@ -1,14 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
   return (
     <header>
       <h1>What Beers Have You Tried?</h1>
       <a href="/"><button>Home</button></a>
-      <Link to={'/create'}>
+      <NavLink to={'/create'}>
         <button>Add Beer</button>
-      </Link>
+      </NavLink>
     </header>
   );
 };
